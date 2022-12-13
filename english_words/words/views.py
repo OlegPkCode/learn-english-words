@@ -1,6 +1,5 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse("<h1>Words</h1>")
+    return render(request, 'words/index.html', {'title': 'words'})

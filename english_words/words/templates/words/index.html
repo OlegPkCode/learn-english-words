@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-</head>
-<body>
+{% extends 'words/base.html' %}
 
-main page
+{% block content %}
+<h3>{{ title }}</h3>
 
-</body>
-</html>
+{% for w in words %}
+<li>{{ w.word }}</li>
+{% endfor %}
+
+{% endblock %}

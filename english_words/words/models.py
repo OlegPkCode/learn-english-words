@@ -8,6 +8,9 @@ class Categories(models.Model):
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
 
+    def __str__(self):
+        return self.name
+
 
 class Dictionaries(models.Model):
     name = models.CharField(max_length=100, unique=True)

@@ -18,4 +18,9 @@ def index(request):
     else:
         form = AddWordForm()
 
-    return render(request, 'words/index.html', {'menu': menu, 'title': 'words', 'words': words_list, 'form': form})
+    return render(request, 'words/index.html', {'menu': menu, 'title': 'Слова', 'words': words_list, 'form': form})
+
+
+def view_word(request):
+    pass
+#     return render(request, 'words/view_word.html', {'menu': menu, 'title': 'Просмотр слова'})

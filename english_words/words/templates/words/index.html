@@ -20,7 +20,7 @@
 <table style="width:100%">
     {% for w in words %}
     <tr>
-        <th> {{ w.word }}</th>
+        <th><a href="{% url 'view_word' %}" > {{ w.word }} </a></th>
         <th><a href="https://translate.google.ru/?hl=ru&tab=wT&sl=en&tl=ru&text={{w.word}}%0A&op=translate">{{w.word}}
             - google</a>
         </th>
@@ -28,6 +28,8 @@
         </th>
         <th><a href="https://www.ldoceonline.com/dictionary/{{w.word}}">{{w.word}} - longman</a></th>
         <th><a href="https://www.lingvolive.com/ru-ru/translate/en-ru/{{w.word}}">{{w.word}} - lingvo</a></th>
+        <th><button type="submit">Изучено</button></th>
+        <th><button type="submit">Удалить</button></th>
     </tr>
     {% endfor %}
 </table>

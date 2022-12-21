@@ -1,12 +1,13 @@
 from django.db import models
+# from django.urls import reverse
 
 
 class Categories(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     class Meta:
-        verbose_name = 'Category'
-        verbose_name_plural = 'Categories'
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
 
     def __str__(self):
         return self.name
@@ -17,8 +18,8 @@ class Dictionaries(models.Model):
     url = models.CharField(max_length=200)
 
     class Meta:
-        verbose_name = 'Dictionary'
-        verbose_name_plural = 'Dictionaries'
+        verbose_name = 'Словарь'
+        verbose_name_plural = 'Словари'
 
 
 class Words(models.Model):
@@ -28,5 +29,9 @@ class Words(models.Model):
     category_id = models.ForeignKey('Categories', on_delete=models.PROTECT)
 
     class Meta:
-        verbose_name = 'Word'
-        verbose_name_plural = 'Words'
+        verbose_name = 'Слово'
+        verbose_name_plural = 'Слова'
+
+    # def get_absolute_url(self):
+    #     return reverse('post', kwargs={'post_id': self.pk})
+

@@ -18,9 +18,19 @@ def index(request):
     else:
         form = AddWordForm()
 
-    return render(request, 'words/index.html', {'menu': menu, 'title': 'Слова', 'words': words_list, 'form': form})
+    context = {
+        'menu': menu,
+        'title': 'Слова',
+        'words': words_list,
+        'form:': form
+    }
+    return render(request, 'words/index.html', context=context)
 
 
-def view_word(request):
-    pass
-#     return render(request, 'words/view_word.html', {'menu': menu, 'title': 'Просмотр слова'})
+def view_word(request, word_id):
+    word_name = Words.objects.get(pk=word_id)
+
+    word_data = {'word_id': word_id, 'word_name': word_name}
+    context = {'menu': menu, 'title': 'Слово', 'word_data': word_data}
+
+    return render(request, 'words/view_word.html', context=context)

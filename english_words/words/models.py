@@ -1,5 +1,5 @@
 from django.db import models
-# from django.urls import reverse
+from django.urls import reverse
 
 
 class Categories(models.Model):
@@ -28,10 +28,13 @@ class Words(models.Model):
     time_clear = models.DateTimeField(null=True, blank=True)
     category_id = models.ForeignKey('Categories', on_delete=models.PROTECT)
 
+    def __str__(self):
+        return self.word
+
     class Meta:
         verbose_name = 'Слово'
         verbose_name_plural = 'Слова'
 
-    # def get_absolute_url(self):
-    #     return reverse('post', kwargs={'post_id': self.pk})
+    def get_absolute_url(self):
+        return reverse('add_word', kwargs={'word_id': self.pk})
 

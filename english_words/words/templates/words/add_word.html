@@ -11,7 +11,6 @@
 
     {% for f in form %}
     <p><label>{{f.label}}: </label>{{ f }}</p>
-
     <div class="form-error">{{ f.errors }}</div>
     {% endfor %}
 
@@ -30,6 +29,8 @@
         </th>
         <th><a href="https://www.ldoceonline.com/dictionary/{{w.word}}">{{w.word}} - longman</a></th>
         <th><a href="https://www.lingvolive.com/ru-ru/translate/en-ru/{{w.word}}">{{w.word}} - lingvo</a></th>
+        <th>{{ w.time_create }}</th>
+        <th>{{ w.time_clear }}</th>
     </tr>
     {% endfor %}
 </table>

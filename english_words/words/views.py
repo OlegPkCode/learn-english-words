@@ -8,8 +8,10 @@ menu = ["Изучаемые слова", "Статистика",
 
 
 def add_word(request):
-    words_list = Words.objects.all()
-    form = AddWordForm()
+    words_list = Words.objects.filter(time_clear__isnull=True)
+    # words_list = Words.objects.all()
+    form = AddWordForm(initial={'category_id': 1})
+    form.fields['category_id'].initial = 1
 
     if request.method == 'POST':
         form = AddWordForm(request.POST)
@@ -53,7 +55,7 @@ def confirm_delete_word(request, word_id):
         w.delete()
         return redirect('add_word')
     elif 'cancel_delete' in request.POST:
-        return redirect('view_word', word_id=word_id)
+        return redirect('add_word')
 
     context = {'menu': menu, 'title': 'Слово', 'word_item': word_item}
 

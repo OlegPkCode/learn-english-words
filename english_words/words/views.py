@@ -6,7 +6,7 @@ menu = ["Изучаемые слова", "Статистика",
         "Настройки", "Обратная связь", "Войти"]
 
 
-def index(request):
+def add_word(request):
     words_list = Words.objects.all()
     form = AddWordForm()
 
@@ -22,9 +22,10 @@ def index(request):
         'menu': menu,
         'title': 'Слова',
         'words': words_list,
-        'form:': form
+        'form': form,
     }
-    return render(request, 'words/index.html', context=context)
+
+    return render(request, 'words/add_word.html', context=context)
 
 
 def view_word(request, word_id):

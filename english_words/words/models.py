@@ -36,5 +36,5 @@ class Words(models.Model):
         verbose_name_plural = 'Слова'
 
     def get_absolute_url(self):
-        return reverse('add_word', kwargs={'word_id': self.pk})
+        return reverse('view_word', kwargs={'word_id': self.pk})
 

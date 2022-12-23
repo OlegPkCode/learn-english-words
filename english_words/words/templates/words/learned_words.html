@@ -1,0 +1,38 @@
+{% extends 'words/base.html' %}
+
+{% block content %}
+
+<h3>{{ title }}</h3>
+
+<form method="post">
+    {% csrf_token %}
+
+    <div class="form-error">{{ form.non_field_errors }}</div>
+
+    {% for f in form %}
+    <p><label>{{f.label}}: </label>{{ f }}</p>
+    <div class="form-error">{{ f.errors }}</div>
+    {% endfor %}
+
+    <button type="submit">Добавить</button>
+</form>
+
+
+<table style="width:100%">
+    {% for w in words %}
+    <tr>
+        <th><a href="{{ w.get_absolute_url }}">{{ w.word }}</a></th>
+        <th><a href="https://translate.google.ru/?hl=ru&tab=wT&sl=en&tl=ru&text={{w.word}}%0A&op=translate">{{w.word}} :
+            google</a>
+        </th>
+        <th><a href="https://context.reverso.net/translation/english-russian/{{w.word}}">{{w.word}} - reverso</a>
+        </th>
+        <th><a href="https://www.ldoceonline.com/dictionary/{{w.word}}">{{w.word}} - longman</a></th>
+        <th><a href="https://www.lingvolive.com/ru-ru/translate/en-ru/{{w.word}}">{{w.word}} - lingvo</a></th>
+        <th>{{ w.time_create }}</th>
+        <th>{{ w.time_clear }}</th>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

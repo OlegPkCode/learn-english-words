@@ -31,7 +31,7 @@ def learned_words(request):
         form = AddWordForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('add_word')
+            return redirect('learned_words')
     else:
         form = AddWordForm()
 
